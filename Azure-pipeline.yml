@@ -1,0 +1,19 @@
+resources:
+  repositories:
+    - repository: cnap-examples-project-templates-pipeline-azure
+      type: git
+      name: cnap-examples-project-templates-pipeline-azure
+      ref: refs/tags/v0.1
+    - repository: cnap-templates-pipeline-azure
+      type: git
+      name: cnap-templates-pipeline-azure
+
+variables:
+  image: java-deletefilesfrominput
+  name: java-deletefilesfrominput
+
+stages:
+  - template: azure-stage-build-and-deploy.yml@cnap-examples-project-templates-pipeline-azure
+    parameters:
+      image: $(image)
+      name: $(name)
